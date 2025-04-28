@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Exp3_S7_Francisco_Vargas {
     static double acoTotal =0.0;
-    static int acoEntradas=0;
     static String ubiAsientos="";
     static String descuento="";
     
@@ -22,6 +21,8 @@ public class Exp3_S7_Francisco_Vargas {
        int opcion=0;
        int opcion2= 0;
        int opcion3=0;
+       int salida=0;
+       boolean salir=false;
        ArrayList <String> list = new ArrayList<>();
        ArrayList <Object>list2 = new ArrayList<>();
        
@@ -31,19 +32,23 @@ public class Exp3_S7_Francisco_Vargas {
        list.add("Costo Final: ");
        
        
-        //for (int i = 0; i <list.size();i++){
-       // System.out.println(list.get(i)+" "+ list2.get(0));}
-     do{
-       do{  
+        
+     
+      do{  
            
         System.out.println("Bienvenidos al Cafe  Moro");
+        do{
         System.out.println("Seleccione tipo de Asiento \nPrecione 1 para VIP  2 para Platea 3 para Balcon");
         opcion=scanner.nextInt();
+        }while(opcion >3 || opcion<1);
        switch (opcion){
            case 1 ->{
                System.out.println("Bienvenidos A La Seccion VIP");
+               do{
                System.out.println("Para Descuento Estudiante Presione 1 Para Tercera Edad Presione 2 Publigo General presione 3");
                opcion2=scanner.nextInt();
+               }while(opcion2>3 || opcion2<1);
+               
                ubiAsientos="VIP";
                if (opcion2==1){
                valorTotal=valorVip*dctoEstudiante;
@@ -62,12 +67,14 @@ public class Exp3_S7_Francisco_Vargas {
                list2.add(valorTotal);
             for (int i = 0; i <list.size();i++){
                  System.out.println(list.get(i)+" "+ list2.get(i));}
-           break;
+           
            }
            case 2->{
                System.out.println("Bienvenidos A La Seccion Platea");
+               do{
                System.out.println("Para Descuento Estudiante Presione 1 Para Tercera Edad Presione 2 Publigo General presione 3");
                opcion2=scanner.nextInt();
+               }while(opcion2>3||opcion2<1);
                ubiAsientos="Platea";
                if (opcion2==1){
                valorTotal=valorPlatea*dctoEstudiante;
@@ -89,8 +96,10 @@ public class Exp3_S7_Francisco_Vargas {
            }
            case 3-> {
                System.out.println("Bienvenidos A La Seccion Balcon");
+               do{
                System.out.println("Para Descuento Estudiante Presione 1 Para Tercera Edad Presione 2 Publigo General presione 3");
                opcion2=scanner.nextInt();
+               }while(opcion2>3|| opcion2<1);
                ubiAsientos="Balcon";
                if (opcion2==1){
                valorTotal=valorBalcon*dctoEstudiante;
@@ -111,10 +120,11 @@ public class Exp3_S7_Francisco_Vargas {
                  System.out.println(list.get(i)+" "+ list2.get(i));}
            }
        }
-        }while(opcion<1 || opcion>3);
-       
-         System.out.println("PAra continuar con su boleta Presione 1 Para salir 2");
+        
+       do{
+         System.out.println("Para continuar con su boleta Presione 1 Para salir 2");
          opcion3=scanner.nextInt();
+       }while(opcion3>2 || opcion3<1);
          if (opcion3==1){
              System.out.println("----------------------------------------");
              System.out.println("            Teatro Moro       ");
@@ -124,14 +134,19 @@ public class Exp3_S7_Francisco_Vargas {
              System.out.println("----------------------------------------");
              System.out.println("gracias por su visita al Teatro Moro");
              System.out.println("----------------------------------------");
-           }else if(opcion3==2){
-               break;
            }
          acoTotal+=valorTotal;
-         System.out.println("Para salir Precione 1 PAra comprar otra entrada presione 2");
-            opcion=scanner.nextInt();
-    }while (opcion!=1 );
-        System.out.println("-----------------------");
+       do{  
+         System.out.println("Para salir Precione 1 Para comprar otra entrada presione 2");
+            salida=scanner.nextInt();
+       }while(salida>2||salida<1);
+            if (salida==1){
+            salir=true;
+            
+            }
+    }while (salir==false );
+         
+         System.out.println("----------------------");
          System.out.println(despedida);
          System.out.println("----------------------");
          System.out.println("Valor Total de las ventas: "+acoTotal);
